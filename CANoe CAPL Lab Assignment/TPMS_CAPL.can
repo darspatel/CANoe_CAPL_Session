@@ -1,0 +1,133 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  int Ig_Stat = 0; //variable for EV Ignition_Status - Ignition on/off control
+  int fr_temp;
+  int fl_temp;
+  int fr_pres;
+  int fl_pres;
+  int rr_temp;
+  int rl_temp;
+  int rr_pres;
+  int rl_pres;
+  message Sensor1Data Sensor1;
+  message Sensor2Data Sensor2;
+}
+
+on key 's' //KL15 is On - engine ignition is On
+{
+  Ig_Stat = 1;
+  putValue(Ignition_Status, Ig_Stat);
+  write("Ignition ON"); //Messgae on Write window
+  
+}
+
+on key 't' //KL15 is Off - engine ignition is off
+{
+  Ig_Stat = 0;
+  putValue(Ignition_Status,Ig_Stat);
+  write("Ignition OFF"); //Messgae on Write window
+}
+
+on start
+{  
+  if(Ig_Stat)
+  {
+    write("Ignition is ON/n");
+  }
+  else
+  {
+    write("Ignition is OFF, please press 's' to turn ignition ON");
+  }  
+}
+
+on message Sensor1Data
+{ 
+  fr_pres = $FrontRight_Pressure_Feedback;
+  fl_pres = $FrontLeft_Pressure_Feedback;
+  fr_temp = $FrontRight_Temp_Feedback;
+  fl_temp = $FrontLeft_Temp_Feedback;
+  rr_pres = $RearRight_Pressure_Feedback;
+  rl_pres = $RearLeft_Pressure_Feedback;
+  rr_temp = $RearRight_Temp_Feedback;
+  rl_temp = $RearLeft_Temp_Feedback;
+  
+  if(Ig_Stat)
+  {
+//    write("Sensor 1");
+//    write("%d", fr_pres);
+//    write("%d", fl_pres);
+//    write("%d", fr_temp);
+//    write("%d", fl_temp);    
+    
+    // Front Temp. Checker
+    if((fr_temp >= 70 && fr_temp <= 100) && (fl_temp >= 70 && fl_temp <= 100)){
+      write("Front Temperature --> OK");
+    }
+    else if(fr_temp > 100 || fl_temp > 100){
+      write("Front Temperature --> HIGH");
+    }
+    else if(fr_temp < 70 || fl_temp < 70){
+      write("Front Temperature --> LOW");
+    }
+    
+    // Front Pres. Checker
+    if((fr_pres >= 32 && fr_pres <= 35) && (fl_pres >= 32 && fl_pres <= 35)){
+      write("Front Pressure --> OK");
+    }
+    else if(fr_pres > 35 || fl_pres > 35){
+      write("Front Pressure --> HIGH");
+    }
+    else if(fr_pres < 32 || fl_pres < 32){
+      write("Front Pressure --> LOW");
+    }  
+  }
+}
+
+on message Sensor2Data
+{
+  fr_pres = $FrontRight_Pressure_Feedback;
+  fl_pres = $FrontLeft_Pressure_Feedback;
+  fr_temp = $FrontRight_Temp_Feedback;
+  fl_temp = $FrontLeft_Temp_Feedback;
+  rr_pres = $RearRight_Pressure_Feedback;
+  rl_pres = $RearLeft_Pressure_Feedback;
+  rr_temp = $RearRight_Temp_Feedback;
+  rl_temp = $RearLeft_Temp_Feedback;
+  
+  if(Ig_Stat)
+  {
+//    write("Sensor 2");
+//    write("%d", rr_pres);
+//    write("%d", rl_pres);
+//    write("%d", rr_temp);
+//    write("%d", rl_temp);
+    
+    // Rear Temp. Checker
+    if((rr_temp >= 70 && rr_temp <= 100) && (rl_temp >= 70 && rl_temp <= 100)){
+      write("Rear Temperature --> OK");
+    }
+    else if(rr_temp > 100 || rl_temp > 100){
+      write("Rear Temperature --> HIGH");
+    }
+    else if(fr_temp < 70 || fl_temp < 70){
+      write("Rear Temperature --> LOW");
+    }
+    
+    // Rear Pres. Checker
+    if((rr_pres >= 32 && rr_pres <= 35) && (rl_pres >= 32 && rl_pres <= 35)){
+      write("Rear Pressure --> OK");
+    }
+    else if(rr_pres > 35 || rl_pres > 35){
+      write("Rear Pressure --> HIGH");
+    }
+    else if(rr_pres < 32 || rl_pres < 32){
+      write("Rear Pressure --> LOW");
+    }
+  }
+}

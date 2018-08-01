@@ -1,0 +1,33 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  int fr_temp;
+  int fl_temp;
+  int fr_pres;
+  int fl_pres;
+  mstimer MsgSendingTmr;
+}
+
+on start
+{
+  fr_temp = 70;
+  fl_temp = 70;
+  fr_pres = 32;
+  fl_pres = 32;
+  setTimer(MsgSendingTmr, 5000);
+}
+
+on timer MsgSendingTmr
+{
+  $FrontRight_Temp_Feedback = fr_temp;
+  $FrontLeft_Temp_Feedback = fl_temp;
+  $FrontRight_Pressure_Feedback = fr_pres;
+  $FrontLeft_Pressure_Feedback = fl_pres;
+  setTimer(MsgSendingTmr, 5000);
+}
+

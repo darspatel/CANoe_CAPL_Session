@@ -1,0 +1,64 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  int Ig_stat = 0;
+}
+
+testcase test_case_1()//Ignition ON condition check
+{
+  TestCaseDescription("Test case is used to check the IGN ON Conditions of SUT");
+  write ("inside test_case_1");
+  putValue(Ignition_Status,Ig_stat);
+  if(Ig_stat == 1)
+  {
+    write("Ignition is ON");
+    testStepPass("TestCase1 Passed");
+  }
+  else if (Ig_stat != 1)
+  {
+    write("Ignition is OFF");
+    testStepWarning("TestCase1 in warning state, IGN still Off");
+  }
+  //testWaitForTimeout(1000);
+  //test_1();
+  //testStepPass(("Life");
+}
+
+testcase test_case_2()//Ignition OFF condition check
+{
+  TestCaseDescription("Test case is used to check the IGN OFF Conditions of SUT");
+  write ("inside test_case_2");
+  putValue(Ignition_Status,Ig_stat);
+  if(Ig_stat == 0)
+  {
+    write("Ignition is OFF");
+    testStepPass("TestCase2 Passed");
+  }
+  else if (Ig_stat != 0)
+  {
+    write("Ignition is ON");
+    testStepFail("TestCase2 Failed");
+  }
+}
+
+
+void MainTest ()
+{
+  TestModuleTitle("TPMS Test Report");
+  TestModuleDescription("This test module calls some test cases to demonstrate ");
+  TestModuleDescription("the functionality of TPMS.");
+  TestReportAddSUTInfo("Company", "KPIT");
+  TestReportAddSUTInfo("Serial No.", "A012345BC");
+  TestReportAddSUTInfo("Manufactured", "2018-08-01");
+  TestReportAddEngineerInfo("Test Engineer", "D.Patel");
+
+  //execute test cases
+  test_case_1();
+  test_case_2(); 
+//  test_case_3();
+}

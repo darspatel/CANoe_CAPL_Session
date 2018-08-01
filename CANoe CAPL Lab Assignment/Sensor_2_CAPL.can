@@ -1,0 +1,33 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  int rr_temp;
+  int rl_temp;
+  int rr_pres;
+  int rl_pres;
+  mstimer MsgSendingTmr;
+}
+
+on start
+{
+  rr_temp = 99;
+  rl_temp = 99;
+  rr_pres = 35;
+  rl_pres = 35;
+  setTimer(MsgSendingTmr, 5000);
+}
+
+on timer MsgSendingTmr
+{
+  $RearRight_Temp_Feedback = rr_temp;
+  $RearLeft_Temp_Feedback = rl_temp;
+  $RearRight_Pressure_Feedback = rr_pres;
+  $RearLeft_Pressure_Feedback = rl_pres;
+  setTimer(MsgSendingTmr, 5000);
+}
+
