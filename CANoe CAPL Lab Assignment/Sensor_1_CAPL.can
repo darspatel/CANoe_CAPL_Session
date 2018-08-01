@@ -15,19 +15,42 @@ variables
 
 on start
 {
-  fr_temp = 70;
-  fl_temp = 70;
-  fr_pres = 32;
-  fl_pres = 32;
-  setTimer(MsgSendingTmr, 5000);
+  fr_temp = 90;
+  fl_temp = 90;
+  fr_pres = 33;
+  fl_pres = 33;
+  //setTimer(MsgSendingTmr, 500);
 }
 
-on timer MsgSendingTmr
+//on timer MsgSendingTmr
+//{
+//  $FrontRight_Temp_Feedback = fr_temp;
+//  $FrontLeft_Temp_Feedback = fl_temp;
+//  $FrontRight_Pressure_Feedback = fr_pres;
+//  $FrontLeft_Pressure_Feedback = fl_pres;
+//  setTimer(MsgSendingTmr, 500);
+//}
+
+on key 'q'
 {
-  $FrontRight_Temp_Feedback = fr_temp;
-  $FrontLeft_Temp_Feedback = fl_temp;
-  $FrontRight_Pressure_Feedback = fr_pres;
-  $FrontLeft_Pressure_Feedback = fl_pres;
-  setTimer(MsgSendingTmr, 5000);
+  $FrontRight_Temp_Feedback = 75;
+  $FrontLeft_Temp_Feedback = 75;
+  $FrontRight_Pressure_Feedback = 40;
+  $FrontLeft_Pressure_Feedback = 40;
 }
 
+on key 'w'
+{
+  $FrontRight_Temp_Feedback = 69;
+  $FrontLeft_Temp_Feedback = 69;
+  $FrontRight_Pressure_Feedback = 35;
+  $FrontLeft_Pressure_Feedback = 35;
+}
+
+on key 'e'
+{
+  $FrontRight_Temp_Feedback = 101;
+  $FrontLeft_Temp_Feedback = 101;
+  $FrontRight_Pressure_Feedback = 31;
+  $FrontLeft_Pressure_Feedback = 31;
+}

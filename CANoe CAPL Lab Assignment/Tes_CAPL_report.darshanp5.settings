@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Settings>
+  <WindowManagement2>
+    <SerializableDictionaryOfStringObject>
+      <item>
+        <key type="System.String">
+          <string>DockingLayout</string>
+        </key>
+        <value type="System.String">
+          <string>&lt;DockSiteLayout xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SerializationFormat="All" Version="2"&gt;
+	&lt;AutoHideHost /&gt;
+	&lt;Content xsi:type="SplitContainer" Orientation="Horizontal" DockedSize="1020,391.333333333333"&gt;
+		&lt;UIElement xsi:type="ToolWindowContainer" DockedSize="350,150" SelectedWindowUniqueId="b14b14b9-af7e-4c75-8b95-0260153a3928"&gt;
+			&lt;UIElement xsi:type="ToolWindowRef" UniqueId="b14b14b9-af7e-4c75-8b95-0260153a3928" /&gt;
+		&lt;/UIElement&gt;
+		&lt;UIElement xsi:type="Workspace"&gt;
+			&lt;Content xsi:type="TabbedMdiHost"&gt;
+				&lt;Content xsi:type="TabbedMdiContainer" SelectedWindowUniqueId="905f5b77-5684-40a8-878a-c09f1eb53a40"&gt;
+					&lt;UIElement xsi:type="DocumentWindowRef" UniqueId="905f5b77-5684-40a8-878a-c09f1eb53a40" /&gt;
+				&lt;/Content&gt;
+			&lt;/Content&gt;
+		&lt;/UIElement&gt;
+	&lt;/Content&gt;
+	&lt;DocumentWindows&gt;
+		&lt;DocumentWindow UniqueId="905f5b77-5684-40a8-878a-c09f1eb53a40" SerializationId="TestCase&amp;lt;3&amp;gt;" IsOpen="true" LastActiveDateTime="2018-08-01T19:32:54.896127-04:00" State="Document" Type="Vector.ReportViewer.UI.ContentViews.Controls.ContentViewDocumentWnd, Vector.ReportViewer.UI" /&gt;
+	&lt;/DocumentWindows&gt;
+	&lt;ToolWindows&gt;
+		&lt;ToolWindow UniqueId="b14b14b9-af7e-4c75-8b95-0260153a3928" Name="mWndExplorer" ContainerDockedSize="350,150" IsOpen="true" LastActiveDateTime="2018-08-01T19:27:43.6223253-04:00" State="Docked" /&gt;
+	&lt;/ToolWindows&gt;
+&lt;/DockSiteLayout&gt;</string>
+        </value>
+      </item>
+      <item>
+        <key type="System.String">
+          <string>WindowLayout</string>
+        </key>
+        <value type="Vector.ReportViewer.UI.Windows.WndPosAndSize">
+          <WndPosAndSize>
+            <Location>
+              <X>128</X>
+              <Y>72</Y>
+            </Location>
+            <Width>1024</Width>
+            <Height>576</Height>
+            <WndState>Normal</WndState>
+          </WndPosAndSize>
+        </value>
+      </item>
+    </SerializableDictionaryOfStringObject>
+  </WindowManagement2>
+  <GlobalOptions2>
+    <SerializableDictionaryOfStringObject>
+      <item>
+        <key type="System.String">
+          <string>ContentView</string>
+        </key>
+        <value type="Vector.ReportViewer.ViewModel.ContentModels.ContentModelPersistList">
+          <ArrayOfContentModelPersist>
+            <ContentModelPersist>
+              <ReportId>200822335</ReportId>
+              <NodeName>test_case_3</NodeName>
+              <NodeType>TestCase</NodeType>
+              <DbId>3</DbId>
+              <IsTreeNode>true</IsTreeNode>
+              <PathToNode>
+                <string>TPMS Test Report</string>
+                <string>test_case_3</string>
+              </PathToNode>
+            </ContentModelPersist>
+          </ArrayOfContentModelPersist>
+        </value>
+      </item>
+    </SerializableDictionaryOfStringObject>
+  </GlobalOptions2>
+  <Queries2>
+    <SerializableDictionaryOfStringObject>
+      <item>
+        <key type="System.String">
+          <string>OpenUserQueries</string>
+        </key>
+        <value type="System.Collections.Generic.List`1[System.String]">
+          <ArrayOfString />
+        </value>
+      </item>
+      <item>
+        <key type="System.String">
+          <string>UnsavedQueries</string>
+        </key>
+        <value type="Vector.ReportViewer.Data.QueryTerms.QueryListPersist">
+          <Queries />
+        </value>
+      </item>
+      <item>
+        <key type="System.String">
+          <string>OrderQueries</string>
+        </key>
+        <value type="System.Collections.Generic.List`1[System.String]">
+          <ArrayOfString />
+        </value>
+      </item>
+    </SerializableDictionaryOfStringObject>
+  </Queries2>
+</Settings>

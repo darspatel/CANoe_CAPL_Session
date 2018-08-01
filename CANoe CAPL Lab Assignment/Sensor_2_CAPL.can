@@ -15,19 +15,42 @@ variables
 
 on start
 {
-  rr_temp = 99;
-  rl_temp = 99;
-  rr_pres = 35;
-  rl_pres = 35;
-  setTimer(MsgSendingTmr, 5000);
+  rr_temp = 80;
+  rl_temp = 80;
+  rr_pres = 34;
+  rl_pres = 34;
+  //setTimer(MsgSendingTmr, 500);
 }
 
-on timer MsgSendingTmr
+//on timer MsgSendingTmr
+//{
+//  $RearRight_Temp_Feedback = rr_temp;
+//  $RearLeft_Temp_Feedback = rl_temp;
+//  $RearRight_Pressure_Feedback = rr_pres;
+//  $RearLeft_Pressure_Feedback = rl_pres;
+//  setTimer(MsgSendingTmr, 500);
+//}
+
+on key 'q'
 {
-  $RearRight_Temp_Feedback = rr_temp;
-  $RearLeft_Temp_Feedback = rl_temp;
-  $RearRight_Pressure_Feedback = rr_pres;
-  $RearLeft_Pressure_Feedback = rl_pres;
-  setTimer(MsgSendingTmr, 5000);
+  $RearRight_Temp_Feedback = 60;
+  $RearLeft_Temp_Feedback = 60;
+  $RearRight_Pressure_Feedback = 32;
+  $RearLeft_Pressure_Feedback = 32;
 }
 
+on key 'w'
+{
+  $RearRight_Temp_Feedback = 100;
+  $RearLeft_Temp_Feedback = 100;
+  $RearRight_Pressure_Feedback = 37;
+  $RearLeft_Pressure_Feedback = 37;
+}
+
+on key 'e'
+{
+  $RearRight_Temp_Feedback = 70;
+  $RearLeft_Temp_Feedback = 70;
+  $RearRight_Pressure_Feedback = 35;
+  $RearLeft_Pressure_Feedback = 35;
+}

@@ -17,14 +17,17 @@ variables
   int rl_pres;
   message Sensor1Data Sensor1;
   message Sensor2Data Sensor2;
+  char low[4] = "LOW";
+  char high[5] = "HIGH";
+  char normal[7] = "NORMAL";
+  
 }
 
 on key 's' //KL15 is On - engine ignition is On
 {
   Ig_Stat = 1;
-  putValue(Ignition_Status, Ig_Stat);
+  //putValue(Ignition_Status, Ig_Stat);
   write("Ignition ON"); //Messgae on Write window
-  
 }
 
 on key 't' //KL15 is Off - engine ignition is off
@@ -36,14 +39,25 @@ on key 't' //KL15 is Off - engine ignition is off
 
 on start
 {  
-  if(Ig_Stat)
+  if(@Ignition_Status)
   {
     write("Ignition is ON/n");
   }
   else
   {
-    write("Ignition is OFF, please press 's' to turn ignition ON");
-  }  
+    write("Ignition is OFF, please turn on Ignition switch to turn ignition ON");
+  }
+}
+on stopMeasurement
+{
+  @Front_Temp_Light = 0;
+  @Front_Pres_Light = 0;
+  @Rear_Temp_Light = 0;
+  @Rear_Temp_Light = 0;
+  putValue(Front_Temp_Stat,"");
+  putValue(Front_Pres_Stat,"");
+  putValue(Rear_Temp_Stat,"");
+  putValue(Rear_Pres_Stat,"");
 }
 
 on message Sensor1Data
@@ -57,7 +71,7 @@ on message Sensor1Data
   rr_temp = $RearRight_Temp_Feedback;
   rl_temp = $RearLeft_Temp_Feedback;
   
-  if(Ig_Stat)
+  if(@Ignition_Status)
   {
 //    write("Sensor 1");
 //    write("%d", fr_pres);
@@ -67,25 +81,45 @@ on message Sensor1Data
     
     // Front Temp. Checker
     if((fr_temp >= 70 && fr_temp <= 100) && (fl_temp >= 70 && fl_temp <= 100)){
-      write("Front Temperature --> OK");
+      write("Front Temperature --> NORMAL");
+      @Front_Temp_Light = 0;
+      putValue(Front_Temp_Stat,normal);
     }
     else if(fr_temp > 100 || fl_temp > 100){
       write("Front Temperature --> HIGH");
+      setControlVisibility("Panel1", "Front_Temp_Light",1);
+      @Front_Temp_Light = 1;
+      putValue(Front_Temp_Stat,high);
     }
     else if(fr_temp < 70 || fl_temp < 70){
       write("Front Temperature --> LOW");
+      setControlVisibility("Panel1", "Front_Temp_Light",1);
+      @Front_Temp_Light = 1;
+      putValue(Front_Temp_Stat,low);
     }
     
     // Front Pres. Checker
     if((fr_pres >= 32 && fr_pres <= 35) && (fl_pres >= 32 && fl_pres <= 35)){
-      write("Front Pressure --> OK");
+      write("Front Pressure --> NORMAL");
+      @Front_Pres_Light = 0;
+      putValue(Front_Pres_Stat,normal);
     }
     else if(fr_pres > 35 || fl_pres > 35){
       write("Front Pressure --> HIGH");
+      setControlVisibility("Panel1", "Front_Pres_Light",1);
+      @Front_Pres_Light = 1;
+      putValue(Front_Pres_Stat,high);
     }
     else if(fr_pres < 32 || fl_pres < 32){
       write("Front Pressure --> LOW");
+      setControlVisibility("Panel1", "Front_Pres_Light",1);
+      @Front_Pres_Light = 1;
+      putValue(Front_Pres_Stat,low);
     }  
+  }
+  else{
+    @Front_Pres_Light = 0;
+    @Front_Temp_Light = 0;
   }
 }
 
@@ -100,7 +134,7 @@ on message Sensor2Data
   rr_temp = $RearRight_Temp_Feedback;
   rl_temp = $RearLeft_Temp_Feedback;
   
-  if(Ig_Stat)
+  if(@Ignition_Status)
   {
 //    write("Sensor 2");
 //    write("%d", rr_pres);
@@ -110,24 +144,44 @@ on message Sensor2Data
     
     // Rear Temp. Checker
     if((rr_temp >= 70 && rr_temp <= 100) && (rl_temp >= 70 && rl_temp <= 100)){
-      write("Rear Temperature --> OK");
+      write("Rear Temperature --> NORMAL");
+      @Rear_Temp_Light = 0;
+      putValue(Rear_Temp_Stat,normal);
     }
     else if(rr_temp > 100 || rl_temp > 100){
       write("Rear Temperature --> HIGH");
+      setControlVisibility("Panel1", "Rear_Temp_Light",1);
+      @Rear_Temp_Light = 1;
+      putValue(Rear_Temp_Stat,high);
     }
-    else if(fr_temp < 70 || fl_temp < 70){
+    else if(rr_temp < 70 || rl_temp < 70){
       write("Rear Temperature --> LOW");
+      setControlVisibility("Panel1", "Rear_Temp_Light",1);
+      @Rear_Temp_Light = 1;
+      putValue(Rear_Temp_Stat,low);
     }
     
     // Rear Pres. Checker
     if((rr_pres >= 32 && rr_pres <= 35) && (rl_pres >= 32 && rl_pres <= 35)){
-      write("Rear Pressure --> OK");
+      write("Rear Pressure --> NORMAL");
+      @Rear_Pres_Light = 0;
+      putValue(Rear_Pres_Stat,normal);
     }
     else if(rr_pres > 35 || rl_pres > 35){
       write("Rear Pressure --> HIGH");
+      setControlVisibility("Panel1", "Rear_Pres_Light",1);
+      @Rear_Pres_Light = 1;
+      putValue(Rear_Pres_Stat,high);
     }
     else if(rr_pres < 32 || rl_pres < 32){
       write("Rear Pressure --> LOW");
+      setControlVisibility("Panel1", "Rear_Pres_Light",1);
+      @Rear_Pres_Light = 1;
+      putValue(Rear_Pres_Stat,low);
     }
+  }
+  else{
+    @Rear_Pres_Light = 0;
+    @Rear_Temp_Light = 0;
   }
 }

@@ -50,7 +50,23 @@ BO_ 67 Sensor1Data: 3 Sensor_1
 
 
 
-EV_ Ignition_Status: 0 [0|1] "" 0 1 DUMMY_NODE_VECTOR0 Vector__XXX;
+EV_ Front_Temp_Stat: 0 [0|0] "" 0 1 DUMMY_NODE_VECTOR8000  TPMS_ECU;
+
+EV_ Front_Pres_Stat: 0 [0|0] "" 0 2 DUMMY_NODE_VECTOR8000  TPMS_ECU;
+
+EV_ Rear_Temp_Stat: 0 [0|0] "" 0 3 DUMMY_NODE_VECTOR8000  TPMS_ECU;
+
+EV_ Rear_Pres_Stat: 0 [0|0] "" 0 4 DUMMY_NODE_VECTOR8000  TPMS_ECU;
+
+EV_ Rear_Temp_Light: 0 [0|1] "" 0 5 DUMMY_NODE_VECTOR0  TPMS_ECU;
+
+EV_ Front_Temp_Light: 0 [0|1] "" 0 6 DUMMY_NODE_VECTOR0  TPMS_ECU;
+
+EV_ Rear_Pres_Light: 0 [0|1] "" 0 7 DUMMY_NODE_VECTOR0  TPMS_ECU;
+
+EV_ Front_Pres_Light: 0 [0|1] "" 0 8 DUMMY_NODE_VECTOR0  TPMS_ECU;
+
+EV_ Ignition_Status: 0 [0|1] "" 0 9 DUMMY_NODE_VECTOR0  TPMS_ECU;
 
 BA_DEF_  "BusType" STRING ;
 BA_DEF_DEF_  "BusType" "CAN";

@@ -46,6 +46,78 @@ testcase test_case_2()//Ignition OFF condition check
   }
 }
 
+testcase test_case_3()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = HIGH, FTemp = NORMAL,");
+  TestCaseDescription("RPres = NORMAL, RTemp = LOW,");
+  write ("inside test_case_3");
+  
+  if(testWaitForTesterConfirmation("Is Front Pressure and Rear Temperature Lights are ON? (press Q before answer)"))
+  {
+    testStepPass("Front Pressure and Rear Temperature Lights were ON");
+  }
+  else
+  {
+    testStepFail("Front Pressure and/or Rear Temperature Lights were OFF");
+  }
+}
+
+testcase test_case_4()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = NORMAL, FTemp = LOW,");
+  TestCaseDescription("RPres = HIGH, RTemp = NORMAL,");
+  write ("inside test_case_4");
+  
+  if(testWaitForTesterConfirmation("Is Rear Pressure and Front Temperature Lights are ON? (press W before answer)"))
+  {
+    testStepPass("Front Pressure and Rear Temperature Lights were ON");
+  }
+  else
+  {
+    testStepFail("Front Pressure and/or Rear Temperature Lights were OFF");
+  }
+  
+}
+
+testcase test_case_5()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = LOW, FTemp = HIGH,");
+  TestCaseDescription("RPres = NORMAL, RTemp = NORMAL");
+  write ("inside test_case_5");
+  
+  if(testWaitForTesterConfirmation("Is Front Pressure and Front Temperature Lights are ON? (press E before answer)"))
+  {
+    testStepPass("Front Pressure and Rear Temperature Lights were ON");
+  }
+  else
+  {
+    testStepFail("Front Pressure and/or Rear Temperature Lights were OFF");
+  }
+}
+
+testcase test_case_6()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = , FTemp = ,");
+  TestCaseDescription("RPres = , RTemp = ,");
+  write ("inside test_case_6");
+  
+}
+
+testcase test_case_7()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = , FTemp = ,");
+  TestCaseDescription("RPres = , RTemp = ,");
+  write ("inside test_case_7");
+  
+}
+
+testcase test_case_8()//Ignition OFF condition check
+{
+  TestCaseDescription("FPres = , FTemp = ,");
+  TestCaseDescription("RPres = , RTemp = ,");
+  write ("inside test_case_8");
+  
+}
 
 void MainTest ()
 {
@@ -60,5 +132,41 @@ void MainTest ()
   //execute test cases
   test_case_1();
   test_case_2(); 
-//  test_case_3();
+  test_case_3();
+  test_case_4();
+  test_case_5();
 }
+
+
+
+
+
+
+/*
+
+Pressure range --> 32 to 35
+Temperature Range --> 70 to 100
+Test 3
+  Front:
+    Pres: High    = 40
+    Temp: Normal  = 75
+  Rear:
+    Pres: Normal  = 32
+    Temp: Low     = 60
+
+Test 4
+  Front:
+    Pres: Normal = 35
+    Temp: Low    = 69
+  Rear:
+    Pres: High   = 37
+    Temp: Normal = 100
+
+Test 5
+  Front:
+    Pres: Low    = 31
+    Temp: High   = 101
+  Rear:
+    Pres: Normal = 35
+    Temp: Normal = 70
+*/
